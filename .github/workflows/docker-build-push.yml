@@ -6,18 +6,19 @@ on:
       registry:
         description: Docker registry
         default: ghcr.io
-        required: true
+        required: false
         type: string
 
       username:
         description: Docker registry username
+        default: ${{ github.actor }}
         required: false
         type: string
 
       dockerfile:
         description: Dockerfile path
         default: ./Dockerfile
-        required: true
+        required: false
         type: string
     
     secrets:
@@ -27,7 +28,6 @@ on:
 
 env:
   DOCKER_IMAGE: ${{ inputs.registry }}/${{ github.repository }}
-  DOCKER_USERNAME: ${{ inputs.username || github.actor }}
   DOCKER_PASSWORD: ${{ secrets.password || secrets.GITHUB_TOKEN }}
 
 jobs:
@@ -46,7 +46,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ${{ inputs.registry }}
-          username: ${{ env.DOCKER_USERNAME }}
+          username: ${{ inputs.username }}
           password: ${{ env.DOCKER_PASSWORD }}
 
       - name: Extract metadata (tags, labels) for Docker image
