@@ -58,7 +58,7 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker image
         id: metadata
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v4
         with:
           images: ${{ env.DOCKER_IMAGE }}
           tags: type=semver,pattern={{version}}
