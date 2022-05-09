@@ -34,10 +34,10 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_CONTAINER_REGISTRY: "monubamb-microsoft.azurecr.io"
-  CONTAINER_NAME: "monumods"
-  RESOURCE_GROUP: "shining-dragon-rg"
-  CLUSTER_NAME: "shining-dragon-aks"
+  AZURE_CONTAINER_REGISTRY: "crmonu.azurecr.io"
+  CONTAINER_NAME: "moaks"
+  RESOURCE_GROUP: "aks"
+  CLUSTER_NAME: "aks"
   IMAGE_PULL_SECRET_NAME: "imagesec"
   DEPLOYMENT_MANIFEST_PATH: 'deployment.yaml'
 
